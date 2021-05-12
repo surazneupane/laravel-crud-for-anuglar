@@ -65,6 +65,10 @@ class CommentController extends Controller
     public function edit($id)
     {
         //
+        $comment = Comment::findOrFail($id);
+        return response()->json($comment,200);
+
+
     }
 
     /**
@@ -77,6 +81,13 @@ class CommentController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $comment = Comment::findOrFail($id);
+        $comment->text = $request->text;
+        $comment->author = $request->author;
+        $comment->update();
+        return response()->json($comment,200);
+
+
     }
 
     /**
