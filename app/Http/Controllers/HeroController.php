@@ -74,6 +74,10 @@ class HeroController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $hero = Hero::findOrFail($id);
+        $hero->name = $request->name;
+        $hero->update();
+        return response()->json($hero,200);
     }
 
     /**
