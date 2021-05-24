@@ -101,8 +101,6 @@ class CommentController extends Controller
         //
         $comment = Comment::findOrFail($id);
         $comment->delete();
-        return response()->json([
-            'success' => true,
-        ]);
+        return response()->json($comment,200);
     }
 }

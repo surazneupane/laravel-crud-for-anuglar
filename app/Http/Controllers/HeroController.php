@@ -37,9 +37,11 @@ class HeroController extends Controller
     public function store(Request $request)
     {
         //
-        Hero::create(
+      $hero =  Hero::create(
            [ 'name'=>$request->name],
         );
+
+        return response()->json($hero,200);
     }
 
     /**
@@ -91,10 +93,7 @@ class HeroController extends Controller
         //
         $hero = Hero::findOrFail($id);
         $hero->delete();
-        return response()->json(
-            [
-                'status'=>true,
-            ]
+        return response()->json($hero,200
         );
     }
 }
